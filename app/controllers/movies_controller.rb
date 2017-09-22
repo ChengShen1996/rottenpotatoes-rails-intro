@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
 
   def movie_params
-    params.require(:movie).permit(:title, :rating, :description, :release_date, :sort_term,:is_hilite)
+    params.require(:movie).permit(:title, :rating, :description, :release_date, :sort_term)
   end
 
   def show
