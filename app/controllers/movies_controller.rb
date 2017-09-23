@@ -22,7 +22,7 @@ class MoviesController < ApplicationController
       @movies = Movie.select{|val| temp.include?val.rating}
       session[:ratings]=params[:ratings]
     end
-    @val_rating=params[:ratings]||session[:ratings]||{}
+    @val_rating=params[:ratings]||session[:ratings]
     val_sort= params[:sort_term]||session[:sort_term]
     if params[:sort_term]
       session[:sort_term]=params[:sort_term]
@@ -32,7 +32,7 @@ class MoviesController < ApplicationController
       redirect_to :sort_term => val_sort, :ratings => @val_rating and return
     end
 
-  if params[:ratings] != session[:ratings] and @val_rating != {}
+  if params[:ratings] != session[:ratings] and @val_rating != nil
       session[:sort_term] = val_sort
       session[:ratings] = @val_rating
       redirect_to :sort_term => val_sort, :ratings => @val_rating and return
