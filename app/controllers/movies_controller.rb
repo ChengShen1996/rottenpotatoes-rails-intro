@@ -23,8 +23,10 @@ class MoviesController < ApplicationController
       session[:ratings]=params[:ratings]
     end
     val_sort= params[:sort_term]||session[:sort_term]
+    @val_rating=params[:ratings]||session[:ratings]
     if params[:sort_term]
       session[:sort_term]=params[:sort_term]
+      redirect_to :sort_term => val_sort, :val_rating =>@val_rating  and return
     end
     if val_sort=='title'
       @movies = Movie.order(val_sort)
@@ -34,7 +36,7 @@ class MoviesController < ApplicationController
       @release_header='hilite'
     end
     movies_back=Array.new
-    @val_rating=params[:ratings]||session[:ratings]
+    
     if @val_rating
       for i in @movies.each
         if @val_rating.include?i.rating
@@ -43,6 +45,7 @@ class MoviesController < ApplicationController
       end
       @movies=movies_back
     end
+
     if params[val_sort] != session[val_sort] or params[@val_rating] != session[@val_rating]
       flash.keep
       redirect_to movies_path val_sort: @val_sort, val_rating: @val_rating
