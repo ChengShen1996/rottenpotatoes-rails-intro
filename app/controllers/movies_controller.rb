@@ -35,7 +35,7 @@ class MoviesController < ApplicationController
   if params[:ratings] != session[:ratings] and @val_rating != {}
       session[:sort_term] = val_sort
       session[:ratings] = @val_rating
-      redirect_to :sort_term => val_sort, :val_rating => @val_rating and return
+      redirect_to val_sort => val_sort, val_rating => @val_rating and return
     end
 
 
