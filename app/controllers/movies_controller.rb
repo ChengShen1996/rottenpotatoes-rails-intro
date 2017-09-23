@@ -43,10 +43,14 @@ class MoviesController < ApplicationController
       end
       @movies=movies_back
     end
+<<<<<<< HEAD
     if params[val_sort] != session[val_sort] or params[val_rating] != session[val_rating]
       flash.keep
       redirect_to movies_path val_sort: @val_sort, val_rating: @val_rating
     end
+=======
+
+>>>>>>> 1cfd316c33ad308a80d101197a82375f0416376a
     
 
     # @movies = Movie.order('release_date ASC')
