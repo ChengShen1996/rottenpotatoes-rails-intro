@@ -32,6 +32,14 @@ class MoviesController < ApplicationController
       redirect_to :sort_term => val_sort, :val_rating => @val_rating and return
     end
 
+  if params[:val_rating] != session[:val_rating] and @val_rating != {}
+      session[:sort_term] = sort_term
+      session[:val_rating] = @val_rating
+      redirect_to :sort_term => sort_term, :val_rating => @val_rating and return
+    end
+
+
+
     if val_sort=='title'
       @movies = Movie.order(val_sort)
       @title_header = 'hilite'
