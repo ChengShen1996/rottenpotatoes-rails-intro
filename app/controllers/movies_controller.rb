@@ -34,16 +34,16 @@ class MoviesController < ApplicationController
       @release_header='hilite'
     end
     movies_back=Array.new
-    val_rating=params[:ratings]||session[:ratings]
-    if val_rating
+    @val_rating=params[:ratings]||session[:ratings]
+    if @val_rating
       for i in @movies.each
-        if val_rating.include?i.rating
+        if @val_rating.include?i.rating
           movies_back.push(i)
         end
       end
       @movies=movies_back
     end
-    if params[val_sort] != session[val_sort] or params[val_rating] != session[val_rating]
+    if params[val_sort] != session[val_sort] or params[@val_rating] != session[@val_rating]
       flash.keep
       redirect_to movies_path val_sort: @val_sort, val_rating: @val_rating
     end
