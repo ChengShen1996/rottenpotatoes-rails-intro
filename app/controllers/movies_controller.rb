@@ -45,7 +45,7 @@ class MoviesController < ApplicationController
     end
     if params[val_sort] != session[val_sort] or params[@val_rating] != session[@val_rating]
       flash.keep
-      redirect_to movies_path val_sort: @val_sort, val_rating: @val_rating
+      redirect_to movies_path val_sort: @val_sort, @val_rating: @val_rating
     end
     
 
