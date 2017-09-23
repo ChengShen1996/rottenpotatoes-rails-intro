@@ -10,10 +10,10 @@
   %thead
     %tr
       / %th Movie Title
-      %th{:class=>@title_header, :id=>"title_header"}= link_to "Movie Title", movies_path(:sort_term =>'title') #my code change
+      %th{:class=>@title_header, :id=>"title_header"}= link_to "Movie Title", movies_path(:sort_term =>'title',:rating => params[:ratings]) #my code change
       %th Rating
       / %th Release Date
-      %th{:class=>@release_header,:id=>"release_date_header"}= link_to "Release Date", movies_path(:sort_term => 'release_date')  #my code change
+      %th{:class=>@release_header,:id=>"release_date_header"}= link_to "Release Date", movies_path(:sort_term => 'release_date',:rating => params[:ratings])  #my code change
       %th More Info
   %tbody
     - @movies.each do |movie|
